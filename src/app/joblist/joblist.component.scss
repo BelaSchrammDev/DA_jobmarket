@@ -1,0 +1,21 @@
+section {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 10px;
+
+    .adress {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+    }
+
+    mat-card {
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+    }
+}

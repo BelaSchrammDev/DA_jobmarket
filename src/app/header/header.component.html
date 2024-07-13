@@ -1,0 +1,15 @@
+<section>
+    <h1>JobMarket</h1>
+    <div class="searchmask">
+        <mat-form-field>
+            <mat-label>Beruf</mat-label>
+            <input [(ngModel)]="beruf" matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Stadt</mat-label>
+            <input [(ngModel)]="stadt" matInput>
+        </mat-form-field>
+        <button (click)="searchJobs()" mat-raised-button>Suchen</button>
+        <button (click)="searchInitJobs()" mat-raised-button>Suchen</button>
+    </div>
+</section>

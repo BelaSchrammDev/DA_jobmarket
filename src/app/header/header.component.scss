@@ -1,0 +1,14 @@
+section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 5px 20px;
+    background-color: rgba(0, 0, 0, 0.05);
+
+    .searchmask {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+    }
+}

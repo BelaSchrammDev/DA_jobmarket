@@ -1,0 +1,14 @@
+<section>
+    @for (job of jobboerseService.currentJobsPage; track $index) {
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{ job.beruf }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="adress">
+                <span>{{ job.arbeitgeber }} in {{ job.stadt }}, {{ job.strasse }}</span>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    }
+</section>
