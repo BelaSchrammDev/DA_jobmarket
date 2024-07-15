@@ -17,5 +17,4 @@ import { JoblistComponent } from './joblist/joblist.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'jobmarket';
 }
