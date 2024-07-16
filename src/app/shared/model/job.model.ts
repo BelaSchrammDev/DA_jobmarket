@@ -10,7 +10,8 @@ export class Job {
         this.titel = jobitem.titel ? jobitem.titel : '';
         this.arbeitgeber = jobitem.arbeitgeber ? jobitem.arbeitgeber : '';
         if (jobitem.arbeitsort) {
-            this.stadt = jobitem.arbeitsort.ort ? jobitem.arbeitsort.ort : '';
+            this.stadt = jobitem.arbeitsort.plz ? jobitem.arbeitsort.plz : '';
+            this.stadt += jobitem.arbeitsort.ort ? ' ' + jobitem.arbeitsort.ort : '';
             this.strasse = jobitem.arbeitsort.strasse ? jobitem.arbeitsort.strasse : '';
         }
     }

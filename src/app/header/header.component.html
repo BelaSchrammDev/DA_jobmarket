@@ -10,6 +10,20 @@
             <input [(ngModel)]="stadt" matInput>
         </mat-form-field>
         <button (click)="searchJobs()" mat-raised-button>Suchen</button>
-        <button (click)="searchInitJobs()" mat-raised-button>Suchen</button>
+        <button (click)="searchInitJobs()" mat-raised-button>SE Le</button>
+        @if(jobboerseService.currentSearch) {
+        <div>
+            <span>{{ jobboerseService.currentJobsCount }}</span> Jobs
+        </div>
+        <button class="df_center" [disabled]="jobboerseService.currentPage == 1"
+            (click)="jobboerseService.getPreviousPage()" mat-mini-fab>
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+        <span>{{ jobboerseService.currentPage }}</span>
+        <button class="df_center" [disabled]="jobboerseService.currentPage >= jobboerseService.currentPageCount"
+            (click)="jobboerseService.getNextPage()" mat-mini-fab>
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+        }
     </div>
 </section>

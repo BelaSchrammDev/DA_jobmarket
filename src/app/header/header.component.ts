@@ -5,7 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { JobboerseService } from '../shared/service/jobboerse.service';
 import { FormsModule } from '@angular/forms';
-
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    MatIconModule,
     FormsModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
@@ -23,7 +24,7 @@ export class HeaderComponent {
   beruf = '';
   stadt = '';
 
-  constructor(private jobboerseService: JobboerseService) { }
+  constructor(public jobboerseService: JobboerseService) { }
 
   searchInitJobs() {
     this.jobboerseService.setFilters({

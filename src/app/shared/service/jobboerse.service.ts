@@ -9,8 +9,9 @@ export class JobboerseService {
   private accessToken: string = '';
   private tokenExpiryTime: number = 0;
   private itemsPerPage = 25;
-  private currentPage = 1;
 
+  public currentPage = 1;
+  public currentSearch = false;
   public currentFilters: string = '';
   public currentJobsPage: Job[] = [];
   public currentJobsCount = 0;
@@ -50,6 +51,13 @@ export class JobboerseService {
 
   async getNextPage() {
     this.currentPage++;
+    await this.fetchJobs();
+  }
+
+
+  async getPreviousPage() {
+    if (this.currentPage == 1) return;
+    this.currentPage--;
     await this.fetchJobs();
   }
 
@@ -95,8 +103,9 @@ export class JobboerseService {
       const data = await response.json();
       console.log(data);
       this.setJobObjects(data.stellenangebote);
+      this.currentSearch = true;
       this.currentJobsCount = data.maxErgebnisse;
-      this.currentPageCount = data.maxErgebnisse / this.itemsPerPage;
+      this.currentPageCount = Math.ceil(data.maxErgebnisse / this.itemsPerPage);
     } catch (error) {
       console.error('Error:', error);
     }
