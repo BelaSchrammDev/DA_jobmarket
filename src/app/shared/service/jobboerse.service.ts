@@ -10,6 +10,7 @@ export class JobboerseService {
   private tokenExpiryTime: number = 0;
   private itemsPerPage = 25;
 
+  public loading = false;
   public currentPage = 1;
   public currentSearch = false;
   public currentFilters: string = '';
@@ -88,6 +89,7 @@ export class JobboerseService {
     const apiUrl = 'https://rest.arbeitsagentur.de/jobboerse/jobsuche-service/pc/v4/jobs';
 
     try {
+      this.loading = true;
       const token = await this.getValidToken(clientId, clientSecret, tokenUrl);
       const response = await fetch(apiUrl + '?' + this.getPageParameters() + '&' + this.currentFilters, {
         method: 'GET',
@@ -106,6 +108,7 @@ export class JobboerseService {
       this.currentSearch = true;
       this.currentJobsCount = data.maxErgebnisse;
       this.currentPageCount = Math.ceil(data.maxErgebnisse / this.itemsPerPage);
+      this.loading = false;
     } catch (error) {
       console.error('Error:', error);
     }

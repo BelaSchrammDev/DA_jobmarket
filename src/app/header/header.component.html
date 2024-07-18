@@ -9,19 +9,29 @@
             <mat-label>Stadt</mat-label>
             <input [(ngModel)]="stadt" matInput>
         </mat-form-field>
-        <button (click)="searchJobs()" mat-raised-button>Suchen</button>
-        <button (click)="searchInitJobs()" mat-raised-button>SE Le</button>
+        <button style="width: 100px;" [disabled]="jobboerseService.loading || ( beruf == '' && stadt == '' )" (click)="searchJobs()"
+            mat-raised-button>
+            @if(jobboerseService.loading) {
+            <mat-spinner diameter="20"></mat-spinner>
+            }
+            @else {
+            Suchen
+            }
+        </button>
+        <button (click)="searchInitJobs()" mat-raised-button>
+            SE Le
+        </button>
         @if(jobboerseService.currentSearch) {
         <div>
             <span>{{ jobboerseService.currentJobsCount }}</span> Jobs
         </div>
         <button class="df_center" [disabled]="jobboerseService.currentPage == 1"
-            (click)="jobboerseService.getPreviousPage()" mat-mini-fab>
+            (click)="prevPage()" mat-mini-fab>
             <mat-icon>chevron_left</mat-icon>
         </button>
-        <span>{{ jobboerseService.currentPage }}</span>
+        <span>{{ jobboerseService.currentPage }} / {{ jobboerseService.currentPageCount }}</span>
         <button class="df_center" [disabled]="jobboerseService.currentPage >= jobboerseService.currentPageCount"
-            (click)="jobboerseService.getNextPage()" mat-mini-fab>
+            (click)="nextPage()" mat-mini-fab>
             <mat-icon>chevron_right</mat-icon>
         </button>
         }
